@@ -1,0 +1,31 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.50'
+    id 'io.vertx.vertx-plugin' version "0.0.6"
+}
+
+group 'gr'
+version '1.0-SNAPSHOT'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation 'io.vertx:vertx-lang-kotlin'
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+vertx {
+    mainVerticle = "com.nixes.server.NetClientVerticle"
+}
+shadowJar {
+    baseName = 'vertx-net-client'
+    version = null
+}
